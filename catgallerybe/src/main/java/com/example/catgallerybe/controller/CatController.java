@@ -3,6 +3,7 @@ package com.example.catgallerybe.controller;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.example.catgallerybe.service.CatService;
 
 import lombok.AllArgsConstructor;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/cats")
 @AllArgsConstructor
@@ -46,8 +48,8 @@ public class CatController {
     }
 
     @PostMapping("/upload")
-    public String uploadCatImage(@RequestParam("file") MultipartFile file) throws IOException {
-        return catService.uploadImage(file);
+    public void uploadCatImage(@RequestParam("file") MultipartFile file) throws IOException {
+        catService.uploadImage(file);
     }
 
 }

@@ -43,12 +43,19 @@ public class CatServiceImpl implements CatService {
     }
 
     @Override
-    public String uploadImage(MultipartFile file) throws IOException {
+    public void uploadImage(MultipartFile file) throws IOException {
         String fileName = UUID.randomUUID().toString();
         Path filePath = Paths.get(UPLOAD_DIR + fileName + ".jpg");
         Files.createDirectories(filePath.getParent());
         Files.write(filePath, file.getBytes());
-        return fileName;
+        
+        final Cat newCat = new Cat();
+        newCat.setId(fileName);
+        newCat.setWidth(500);
+        newCat.setHeight(500);
+        newCat.setUrl("../"+ UPLOAD_DIR + fileName + ".jpg");
+
+        catRepository.save(newCat);
     }
 
 }

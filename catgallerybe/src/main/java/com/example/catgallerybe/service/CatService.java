@@ -17,6 +17,6 @@ public interface CatService {
 
     public void deleteCat(String id);
 
-    public String uploadImage(MultipartFile file) throws IOException;
+    public void uploadImage(MultipartFile file) throws IOException;
     
 }
