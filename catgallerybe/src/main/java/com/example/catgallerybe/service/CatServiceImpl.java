@@ -53,7 +53,7 @@ public class CatServiceImpl implements CatService {
         newCat.setId(fileName);
         newCat.setWidth(500);
         newCat.setHeight(500);
-        newCat.setUrl("../"+ UPLOAD_DIR + fileName + ".jpg");
+        newCat.setUrl("http://localhost:8080/uploads/" + fileName + ".jpg");
 
         catRepository.save(newCat);
     }
